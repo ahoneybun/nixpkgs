@@ -549,6 +549,12 @@
       '';
   });
 
+  elixir-tools-nvim = super.elixir-tools-nvim.overrideAttrs {
+    fixupPhase = ''
+      patchShebangs $(find $out/bin/ -type f -not -name credo-language-server)
+    '';
+  };
+
   executor-nvim = super.executor-nvim.overrideAttrs {
     dependencies = with self; [ nui-nvim ];
   };
@@ -668,6 +674,10 @@
 
   harpoon2 = super.harpoon2.overrideAttrs {
     dependencies = with self; [ plenary-nvim ];
+  };
+
+  haskell-snippets-nvim = super.haskell-snippets-nvim.overrideAttrs {
+    dependencies = [ self.luasnip ];
   };
 
   haskell-scope-highlighting-nvim = super.haskell-scope-highlighting-nvim.overrideAttrs {
