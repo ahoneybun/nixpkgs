@@ -2,7 +2,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "system76-power";
-  version = "1.1.23";
+  version = "1.2.1";
 
   src = fetchFromGitHub {
     owner = "pop-os";
